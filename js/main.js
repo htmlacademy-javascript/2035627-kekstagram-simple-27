@@ -5,9 +5,8 @@
  * @param {number} maxLength Максимальная длина
  * @returns {boolean} Подходит ли по длине
  */
-function checkCommentLength(comment, maxLength) {
-  comment.length < maxLength;
-}
+
+const checkCommentLength = (comment, maxLength) => comment.length < maxLength;
 checkCommentLength('hello world', 140);
 
 //Функция для выбора рандомного числа из заданного диапазона
@@ -25,7 +24,7 @@ const getRandomNumber = (a, b) => {
   const max = Math.floor(Math.max(a, b));
   const number = Math.random() * (max + 1 - min) + min;
   return Math.floor(number);
-}
+};
 getRandomNumber(0, 10);
 
 //Массив из случайных комментариев к фото
@@ -35,23 +34,23 @@ const RANDOM_COMMENTS = [
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
+];
 
 //Количество объектов в массиве к каждому посту
 const ELEMENTS_NUMBER = 25;
 
-//Функция для выбора случайного элемента в массиве
-const getRandomElement = (elemets) =>
-elements[getRandomNumber(0, elemets.length - 1)];
-
 //Функция для создания поста
-const createPost =  () => ({
+const createPost = () => ({
   id: getRandomNumber(1, 25),
-  url: `photos/${getRandomIntInclusive(1, 25)}.jpg`,
-  description: getRandomElement(RANDOM_COMMENTS),
+  url: `photos/${getRandomNumber(1, 25)}.jpg`,
+  description: RANDOM_COMMENTS[getRandomNumber(0, RANDOM_COMMENTS.length - 1)],
   likes: getRandomNumber(15, 200),
-  comments: getRandomNumber(0, 200)
+  comments: getRandomNumber(0, 200),
 });
+createPost();
 
 //Создание массива из N элементов
-const post = Array.from({length:ELEMENTS_NUMBER}, createPost);
+/* eslint-disable no-unused-vars */
+const post = Array.from({ length: ELEMENTS_NUMBER }, createPost);
+/* eslint-disable no-unused-vars */
