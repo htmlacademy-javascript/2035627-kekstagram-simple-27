@@ -17,7 +17,7 @@ checkCommentLength('hello world', 140);
  * @param {number} max Положительное число
  * @returns {number} Случайное в заданном промежутке включительно
  */
-function getRandomNumber(a, b) {
+const getRandomNumber = (a, b) => {
   if (a < 0 || b < 0) {
     return NaN;
   }
@@ -27,3 +27,31 @@ function getRandomNumber(a, b) {
   return Math.floor(number);
 }
 getRandomNumber(0, 10);
+
+//Массив из случайных комментариев к фото
+const RANDOM_COMMENTS = [
+  'Всё отлично!',
+  'В целом всё неплохо. Но не всё.',
+  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
+
+//Количество объектов в массиве к каждому посту
+const ELEMENTS_NUMBER = 25;
+
+//Функция для выбора случайного элемента в массиве
+const getRandomElement = (elemets) =>
+elements[getRandomNumber(0, elemets.length - 1)];
+
+//Функция для создания поста
+const createPost =  () => ({
+  id: getRandomNumber(1, 25),
+  url: `photos/${getRandomIntInclusive(1, 25)}.jpg`,
+  description: getRandomElement(RANDOM_COMMENTS),
+  likes: getRandomNumber(15, 200),
+  comments: getRandomNumber(0, 200)
+});
+
+//Создание массива из N элементов
+const post = Array.from({length:ELEMENTS_NUMBER}, createPost);
