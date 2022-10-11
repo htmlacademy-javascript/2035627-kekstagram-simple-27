@@ -41,16 +41,17 @@ const RANDOM_COMMENTS = [
 const ELEMENTS_NUMBER = 25;
 
 //Функция для создания поста
-const createPost = () => ({
-  id: getRandomNumber(1, 25),
-  url: `photos/${getRandomNumber(1, 25)}.jpg`,
+const createPost = (index) => ({
+  id: index,
+  url: `photos/${index}.jpg`,
   description: RANDOM_COMMENTS[getRandomNumber(0, RANDOM_COMMENTS.length - 1)],
   likes: getRandomNumber(15, 200),
   comments: getRandomNumber(0, 200),
 });
+
 createPost();
 
 //Создание массива из N элементов
-/* eslint-disable no-unused-vars */
-const post = Array.from({ length: ELEMENTS_NUMBER }, createPost);
-/* eslint-disable no-unused-vars */
+// eslint-disable-next-line
+const post = Array.from({ length: ELEMENTS_NUMBER }, (_, index) => createPost(index + 1));
+
