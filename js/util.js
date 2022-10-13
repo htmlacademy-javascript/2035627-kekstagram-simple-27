@@ -27,4 +27,9 @@ const getRandomNumber = (a, b) => {
 };
 getRandomNumber(0, 10);
 
+//Функция для выбора рандомного элемента из массива
+/**
+ * @param {Object[]} elements Массив
+ */
+
 export { checkCommentLength, getRandomNumber };

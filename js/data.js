@@ -14,23 +14,22 @@ const RANDOM_COMMENTS = [
 const ELEMENTS_NUMBER = 25;
 
 //Функция для создания поста
-const createPost = (index) => ({
+const generatePostData = (index) => ({
   id: index,
   url: `photos/${index}.jpg`,
-  description: RANDOM_COMMENTS[getRandomNumber(0, RANDOM_COMMENTS.length - 1)],
+  description: RANDOM_COMMENTS[getRandomNumber(0, RANDOM_COMMENTS.length)],
   likes: getRandomNumber(15, 200),
   comments: getRandomNumber(0, 200),
 });
 
-createPost();
+generatePostData();
 
 //Создание массива из N элементов
-// eslint-disable-next-line
-const showPost = () => {
+const createPost = () => {
   const post = Array.from({ length: ELEMENTS_NUMBER }, (_, index) =>
-    createPost(index + 1)
+    generatePostData(index + 1)
   );
   return post;
 };
 
-export { showPost };
+export { createPost };
