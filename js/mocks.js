@@ -1,4 +1,4 @@
-import { getRandomNumber } from './util.js';
+import { getRandomNumber, getRandomElement } from './util.js';
 
 //Массив из случайных комментариев к фото
 const RANDOM_COMMENTS = [
@@ -17,7 +17,7 @@ const ELEMENTS_NUMBER = 25;
 const generatePostData = (index) => ({
   id: index,
   url: `photos/${index}.jpg`,
-  description: RANDOM_COMMENTS[getRandomNumber(0, RANDOM_COMMENTS.length)],
+  description: getRandomElement(RANDOM_COMMENTS),
   likes: getRandomNumber(15, 200),
   comments: getRandomNumber(0, 200),
 });
@@ -25,11 +25,7 @@ const generatePostData = (index) => ({
 generatePostData();
 
 //Создание массива из N элементов
-const createPost = () => {
-  const post = Array.from({ length: ELEMENTS_NUMBER }, (_, index) =>
-    generatePostData(index + 1)
-  );
-  return post;
-};
+const createPosts = () => Array.from({ length: ELEMENTS_NUMBER }, (_, index) =>
+  generatePostData(index + 1));
 
-export { createPost };
+export default createPosts;
