@@ -1,5 +1,7 @@
 import './util.js';
-import './data.js';
+import './mocks.js';
+import './rendering.js';
 
-import { createPost } from './data.js';
-createPost();
+import createPosts from './mocks.js';
+createPosts();
+

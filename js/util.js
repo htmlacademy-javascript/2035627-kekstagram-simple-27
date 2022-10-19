@@ -25,11 +25,11 @@ const getRandomNumber = (a, b) => {
   const number = Math.random() * (max + 1 - min) + min;
   return Math.floor(number);
 };
-getRandomNumber(0, 10);
 
-//Функция для выбора рандомного элемента из массива
+//Функция для выбора рандомного элемента из заданного массива
 /**
- * @param {Object[]} elements Массив
+ * @param {Object[]} elements Переданный массив
  */
+const getRandomElement = (elements) => elements[getRandomNumber(0, elements.length)];
 
-export { checkCommentLength, getRandomNumber };
+export { checkCommentLength, getRandomNumber, getRandomElement };
