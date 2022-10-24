@@ -30,6 +30,11 @@ const getRandomNumber = (a, b) => {
 /**
  * @param {Object[]} elements Переданный массив
  */
-const getRandomElement = (elements) => elements[getRandomNumber(0, elements.length)];
+const getRandomElement = (elements) =>
+  elements[getRandomNumber(0, elements.length)];
 
 export { checkCommentLength, getRandomNumber, getRandomElement };
+
+//Функция для проверки нажата ли клавиша ESC
+export const isEscapeKey = (evt) => evt.key === 'Escape';
+
