@@ -1,4 +1,5 @@
 import { isEscapeKey } from './util.js';
+import { resetImageSettings } from './picture-effects.js';
 
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const fileInput = document.querySelector('#upload-file');
@@ -11,6 +12,7 @@ const toggleClasses = (isModalOpen = true) => {
 
 const closeModal = () => {
   toggleClasses(false);
+  resetImageSettings();
 };
 
 const closeModalOnEscape = (evt) => {
