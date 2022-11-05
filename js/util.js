@@ -39,14 +39,10 @@ const isEscapeKey = (evt) => evt.key === 'Escape';
 //Функция удаляющая последний знак у строки
 const removeLastSymbol = (str) => str.slice(0, -1);
 
-//Функция для привода строки к числу
-const toNumber = (str) => Number(str);
-
 export {
   checkCommentLength,
   getRandomNumber,
   getRandomElement,
   isEscapeKey,
   removeLastSymbol,
-  toNumber,
 };

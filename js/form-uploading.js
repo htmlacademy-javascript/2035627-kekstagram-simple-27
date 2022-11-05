@@ -1,9 +1,10 @@
 import { isEscapeKey } from './util.js';
 import { resetImageSettings } from './picture-effects.js';
+import { submitFormData, pristine, uploadForm } from './form-validation.js';
 
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const fileInput = document.querySelector('#upload-file');
-const uploadForm = document.querySelector('.img-upload__form');
+const commentField = document.querySelector('.text__description');
 
 const toggleClasses = (isModalOpen = true) => {
   document.body.classList.toggle('modal-open', isModalOpen);
@@ -11,12 +12,17 @@ const toggleClasses = (isModalOpen = true) => {
 };
 
 const closeModal = () => {
-  toggleClasses(false);
-  resetImageSettings();
+  if (!document.body.contains(document.querySelector('.error'))) {
+    toggleClasses(false);
+    resetImageSettings();
+    uploadForm.reset();
+    pristine.reset();
+  }
 };
+const isCommentFieldFocused = () => document.activeElement === commentField;
 
 const closeModalOnEscape = (evt) => {
-  if (isEscapeKey(evt)) {
+  if (isEscapeKey(evt) && !isCommentFieldFocused()) {
     evt.preventDefault();
     closeModal();
   }
@@ -25,6 +31,7 @@ const closeModalOnEscape = (evt) => {
 const openModal = () => {
   toggleClasses();
   document.addEventListener('keydown', closeModalOnEscape);
+  uploadForm.addEventListener('submit', submitFormData);
 };
 
 fileInput.addEventListener('change', () => {
@@ -34,6 +41,7 @@ fileInput.addEventListener('change', () => {
 uploadForm.addEventListener('reset', () => {
   closeModal();
   document.removeEventListener('keydown', closeModalOnEscape);
+  uploadForm.removeEventListener('submit', submitFormData);
 });
 
-document.addEventListener('keydown', (evt) => isEscapeKey(evt) && closeModal());
+export { closeModal };
