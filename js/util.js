@@ -36,13 +36,9 @@ const getRandomElement = (elements) =>
 //Функция для проверки нажата ли клавиша ESC
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-//Функция удаляющая последний знак у строки
-const removeLastSymbol = (str) => str.slice(0, -1);
-
 export {
   checkCommentLength,
   getRandomNumber,
   getRandomElement,
   isEscapeKey,
-  removeLastSymbol,
 };

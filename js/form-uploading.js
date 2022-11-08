@@ -1,10 +1,12 @@
 import { isEscapeKey } from './util.js';
 import { resetImageSettings } from './picture-effects.js';
-import { submitFormData, pristine, uploadForm } from './form-validation.js';
+import { onSubmitFormData, pristine, uploadForm } from './form-validation.js';
 
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const fileInput = document.querySelector('#upload-file');
 const commentField = document.querySelector('.text__description');
+const fileChooser = document.querySelector('.img-upload__input');
+const imagePreview = document.querySelector('.img-upload__preview img');
 
 const toggleClasses = (isModalOpen = true) => {
   document.body.classList.toggle('modal-open', isModalOpen);
@@ -21,7 +23,7 @@ const closeModal = () => {
 };
 const isCommentFieldFocused = () => document.activeElement === commentField;
 
-const closeModalOnEscape = (evt) => {
+const onEscapeDown = (evt) => {
   if (isEscapeKey(evt) && !isCommentFieldFocused()) {
     evt.preventDefault();
     closeModal();
@@ -30,8 +32,8 @@ const closeModalOnEscape = (evt) => {
 
 const openModal = () => {
   toggleClasses();
-  document.addEventListener('keydown', closeModalOnEscape);
-  uploadForm.addEventListener('submit', submitFormData);
+  document.addEventListener('keydown', onEscapeDown);
+  uploadForm.addEventListener('submit', onSubmitFormData);
 };
 
 fileInput.addEventListener('change', () => {
@@ -40,8 +42,14 @@ fileInput.addEventListener('change', () => {
 
 uploadForm.addEventListener('reset', () => {
   closeModal();
-  document.removeEventListener('keydown', closeModalOnEscape);
-  uploadForm.removeEventListener('submit', submitFormData);
+  document.removeEventListener('keydown', onEscapeDown);
+  uploadForm.removeEventListener('submit', onSubmitFormData);
+});
+
+//Загрузка пользовательского фото(для интереса)
+fileChooser.addEventListener('change', () => {
+  const file = fileChooser.files[0];
+  imagePreview.src = URL.createObjectURL(file);
 });
 
 export { closeModal };

@@ -1,5 +1,3 @@
-import { removeLastSymbol } from './util.js';
-
 const MAX_SCALE = 100;
 const MIN_SCALE = 25;
 const STEP = 25;
@@ -15,23 +13,11 @@ const updateValue = (newValue) => {
 };
 
 buttonBigger.addEventListener('click', () => {
-  const currentValue = scaleValue.value;
-  const numberValue = Number(removeLastSymbol(currentValue));
-  if (numberValue < MAX_SCALE) {
-    updateValue(numberValue + STEP);
-  }
-  if (numberValue > MAX_SCALE) {
-    updateValue(MAX_SCALE);
-  }
+  const currentValue = parseInt(scaleValue.value, 10) + STEP;
+  updateValue(currentValue > MAX_SCALE ? MAX_SCALE : currentValue);
 });
 
 buttonSmaller.addEventListener('click', () => {
-  const currentValue = scaleValue.value;
-  const numberValue = Number(removeLastSymbol(currentValue));
-  if (numberValue > MIN_SCALE) {
-    updateValue(numberValue - STEP);
-  }
-  if (numberValue < MIN_SCALE) {
-    updateValue(MIN_SCALE);
-  }
+  const currentValue = parseInt(scaleValue.value, 10) - STEP;
+  updateValue(currentValue < MIN_SCALE ? MIN_SCALE : currentValue);
 });

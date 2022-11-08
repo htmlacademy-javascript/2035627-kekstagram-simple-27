@@ -2,9 +2,7 @@ const effectsList = document.querySelector('.effects__list');
 const sliderContainer = document.querySelector('.effect-level');
 const sliderElement = document.querySelector('.effect-level__slider');
 const sliderValue = document.querySelector('.effect-level__value');
-const imagePreview = document
-  .querySelector('.img-upload__preview')
-  .querySelector('img');
+const imagePreview = document.querySelector('.img-upload__preview img');
 
 let currentEffect = '';
 let currentPostfix = '';

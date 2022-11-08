@@ -18,10 +18,10 @@ const unblockSubmitButton = () => {
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__text',
   errorTextParent: 'img-upload__text',
-  errorTextClass: 'img-upload__text__error',
+  errorTextClass: 'img-upload__text-error',
 });
 
-const submitFormData = (evt) => {
+const onSubmitFormData = (evt) => {
   evt.preventDefault();
 
   const isValid = pristine.validate();
@@ -44,4 +44,4 @@ const submitFormData = (evt) => {
   }
 };
 
-export { submitFormData, pristine, uploadForm };
+export { onSubmitFormData, pristine, uploadForm };

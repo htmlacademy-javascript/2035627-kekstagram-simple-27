@@ -11,17 +11,25 @@ const showAlert = (alert) => {
   function onCloseAlertElement() {
     alertElement.remove();
     alertButton.removeEventListener('click', onCloseAlertElement);
-    document.removeEventListener('keydown', onEscDown);
+    document.removeEventListener('keydown', onEscapeDown);
   }
 
-  function onEscDown(evt) {
+  function onEscapeDown(evt) {
     if (isEscapeKey(evt)) {
       onCloseAlertElement();
     }
   }
-
+  function onOutsideClick(evt) {
+    if (
+      !evt.target.contains(document.querySelector('.error')) ||
+      !evt.target.contains(document.querySelector('.success'))
+    ) {
+      onCloseAlertElement();
+    }
+  }
   alertButton.addEventListener('click', onCloseAlertElement);
-  document.addEventListener('keydown', onEscDown);
+  document.addEventListener('keydown', onEscapeDown);
+  document.addEventListener('click', onOutsideClick);
 
   document.body.appendChild(alertElement);
 };

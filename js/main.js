@@ -1,5 +1,8 @@
+//Отрисовка фото миниатюр
 import './rendering.js';
-import './picture-scale.js';
-import './picture-effects.js';
+//Форма для редактирования фото
 import './form-uploading.js';
-
+//Изменение масштаба фото
+import './picture-scale.js';
+//Наложение эффектов на фото
+import './picture-effects.js';
