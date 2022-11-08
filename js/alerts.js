@@ -12,6 +12,7 @@ const showAlert = (alert) => {
     alertElement.remove();
     alertButton.removeEventListener('click', onCloseAlertElement);
     document.removeEventListener('keydown', onEscapeDown);
+    document.removeEventListener('click', onOutsideClick);
   }
 
   function onEscapeDown(evt) {
