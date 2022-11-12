@@ -394,8 +394,10 @@ main {
 }
 
 .img-upload__text-error {
-  color: #e90000;
+  color: #ffffff;
+  font-weight: bold;
   font-size: 16px;
+  text-transform: lowercase;
 }
 
 
@@ -1216,6 +1218,21 @@ main {
   z-index: 10;
 
   background-color: rgba(0, 0, 0, 0.8);
+}
+.server-error {
+  position: fixed;
+  text-align: center;
+  padding-top: 130px;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  font-weight: 700;
+  font-size: 20px;
+  color: #ffe753;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
 }
 
 .error__inner,

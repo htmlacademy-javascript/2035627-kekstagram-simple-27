@@ -6,6 +6,9 @@ const imagePreview = document.querySelector('.img-upload__preview img');
 
 let currentEffect = '';
 let currentPostfix = '';
+
+const DEFAULT_START = 100;
+
 const FROM_ZERO_TO_1 = {
   min: 0,
   max: 1,
@@ -15,7 +18,7 @@ const FROM_ZERO_TO_100 = {
   max: 100,
 };
 
-const sliderSettings = {
+const SLIDER_SETTINGS = {
   none: {
     range: FROM_ZERO_TO_100,
     step: 1,
@@ -63,12 +66,12 @@ sliderContainer.classList.add('hidden');
 
 noUiSlider.create(sliderElement, {
   range: FROM_ZERO_TO_100,
-  start: 100,
+  start: DEFAULT_START,
   step: 1,
   connect: 'lower',
 });
 
-const updateSliderSettings = ({ range, step, filter, postfix }) => {
+const onUpdateSliderSettings = ({ range, step, filter, postfix }) => {
   currentEffect = filter;
   currentPostfix = postfix;
 
@@ -100,7 +103,7 @@ const resetImageSettings = () => {
   imagePreview.className = '';
 
   closeSlider();
-  updateSliderSettings(sliderSettings.none);
+  onUpdateSliderSettings(SLIDER_SETTINGS.none);
 };
 
 const changeEffect = (evt) => {
@@ -109,7 +112,7 @@ const changeEffect = (evt) => {
   if (evt.target.value !== 'none') {
     showSlider();
     imagePreview.classList.add(`effects__preview--${evt.target.value}`);
-    updateSliderSettings(sliderSettings[evt.target.value]);
+    onUpdateSliderSettings(SLIDER_SETTINGS[evt.target.value]);
   } else {
     closeSlider();
   }

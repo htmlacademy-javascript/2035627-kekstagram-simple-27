@@ -52,4 +52,4 @@ fileChooser.addEventListener('change', () => {
   imagePreview.src = URL.createObjectURL(file);
 });
 
-export { closeModal };
+export { closeModal, imagePreview };

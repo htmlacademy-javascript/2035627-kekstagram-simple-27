@@ -1,5 +1,6 @@
 import { isEscapeKey } from './util.js';
 
+const alertShowTime = 5000;
 const showAlert = (alert) => {
   const alertTemplate = document
     .querySelector(`#${alert}`)
@@ -35,4 +36,15 @@ const showAlert = (alert) => {
   document.body.appendChild(alertElement);
 };
 
-export { showAlert };
+const showServerAlert = (message) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.className = 'server-error';
+  alertContainer.textContent = message;
+  document.body.append(alertContainer);
+
+  setTimeout(() => {
+    alertContainer.remove();
+  }, alertShowTime);
+};
+
+export { showAlert, showServerAlert };

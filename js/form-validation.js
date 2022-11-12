@@ -23,7 +23,6 @@ const pristine = new Pristine(uploadForm, {
 
 const onSubmitFormData = (evt) => {
   evt.preventDefault();
-
   const isValid = pristine.validate();
 
   if (isValid) {
