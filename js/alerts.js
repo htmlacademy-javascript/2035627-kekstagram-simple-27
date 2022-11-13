@@ -11,9 +11,8 @@ const showAlert = (alert) => {
 
   function onCloseAlertElement() {
     alertElement.remove();
-    alertButton.removeEventListener('click', onCloseAlertElement);
     document.removeEventListener('keydown', onEscapeDown);
-    document.removeEventListener('click', onOutsideClick);
+    document.removeEventListener('click', onClickClose);
   }
 
   function onEscapeDown(evt) {
@@ -21,17 +20,13 @@ const showAlert = (alert) => {
       onCloseAlertElement();
     }
   }
-  function onOutsideClick(evt) {
-    if (
-      !evt.target.contains(document.querySelector('.error')) ||
-      !evt.target.contains(document.querySelector('.success'))
-    ) {
+  function onClickClose({target}) {
+    if (target === alertElement || target === alertButton) {
       onCloseAlertElement();
     }
   }
-  alertButton.addEventListener('click', onCloseAlertElement);
   document.addEventListener('keydown', onEscapeDown);
-  document.addEventListener('click', onOutsideClick);
+  document.addEventListener('click', onClickClose);
 
   document.body.appendChild(alertElement);
 };

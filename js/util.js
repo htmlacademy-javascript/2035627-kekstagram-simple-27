@@ -36,9 +36,6 @@ const getRandomElement = (elements) =>
 //Функция для проверки нажата ли клавиша ESC
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-// Функция взята из интернета и доработана
-// Источник - https://www.freecodecamp.org/news/javascript-debounce-example
-
 export {
   checkCommentLength,
   getRandomNumber,

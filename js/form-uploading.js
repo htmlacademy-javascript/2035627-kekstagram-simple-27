@@ -46,7 +46,7 @@ uploadForm.addEventListener('reset', () => {
   uploadForm.removeEventListener('submit', onSubmitFormData);
 });
 
-//Загрузка пользовательского фото(для интереса)
+//Загрузка пользовательского фото
 fileChooser.addEventListener('change', () => {
   const file = fileChooser.files[0];
   imagePreview.src = URL.createObjectURL(file);

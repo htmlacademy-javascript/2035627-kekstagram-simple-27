@@ -14,7 +14,7 @@ const getData = (onSuccess) =>
       showServerAlert(serverErrorMessage);
     });
 
-const sendData = (onSuccess, onErorr, body) => {
+const sendData = (onSuccess, onError, body) => {
   fetch(REMOTE_SERVER, {
     method: 'POST',
     body,
@@ -23,11 +23,11 @@ const sendData = (onSuccess, onErorr, body) => {
       if (response.ok) {
         onSuccess();
       } else {
-        onErorr(serverErrorMessage);
+        onError(serverErrorMessage);
       }
     })
     .catch(() => {
-      onErorr(serverErrorMessage);
+      onError(serverErrorMessage);
     });
 };
 
