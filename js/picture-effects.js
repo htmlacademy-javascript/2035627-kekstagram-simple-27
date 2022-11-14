@@ -78,7 +78,7 @@ const onUpdateSliderSettings = ({ range, step, filter, postfix }) => {
   sliderElement.noUiSlider.updateOptions({
     range: range,
     step: step,
-    start: 100,
+    start: DEFAULT_START,
   });
 };
 
@@ -86,7 +86,7 @@ sliderElement.noUiSlider.on('update', () => {
   const currentValue = sliderElement.noUiSlider.get();
 
   imagePreview.style.filter = `${currentEffect}(${currentValue}${currentPostfix})`;
-  sliderValue.setAttribute('value', currentValue);
+  sliderValue.value = currentValue;
 });
 
 const showSlider = () => {
@@ -106,7 +106,7 @@ const resetImageSettings = () => {
   onUpdateSliderSettings(SLIDER_SETTINGS.none);
 };
 
-const changeEffect = (evt) => {
+const onEffectChange = (evt) => {
   imagePreview.classList = '';
   imagePreview.style.filter = '';
   if (evt.target.value !== 'none') {
@@ -117,6 +117,6 @@ const changeEffect = (evt) => {
     closeSlider();
   }
 };
-effectsList.addEventListener('change', changeEffect);
+effectsList.addEventListener('change', onEffectChange);
 
 export { resetImageSettings };

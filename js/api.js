@@ -1,7 +1,7 @@
 import { showServerAlert } from './alerts.js';
 
 const REMOTE_SERVER = 'https://27.javascript.pages.academy/kekstagram-simple';
-const serverErrorMessage =
+const SERVER_ERROR_MESSAGE =
   'Что-то пошло не так:( Попробуйте перезагрузить страницу';
 
 const getData = (onSuccess) =>
@@ -11,7 +11,7 @@ const getData = (onSuccess) =>
       onSuccess(pictures);
     })
     .catch(() => {
-      showServerAlert(serverErrorMessage);
+      showServerAlert(SERVER_ERROR_MESSAGE);
     });
 
 const sendData = (onSuccess, onError, body) => {
@@ -23,11 +23,11 @@ const sendData = (onSuccess, onError, body) => {
       if (response.ok) {
         onSuccess();
       } else {
-        onError(serverErrorMessage);
+        onError(SERVER_ERROR_MESSAGE);
       }
     })
     .catch(() => {
-      onError(serverErrorMessage);
+      onError(SERVER_ERROR_MESSAGE);
     });
 };
 
